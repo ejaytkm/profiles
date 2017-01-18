@@ -1,0 +1,36 @@
+
+
+<div id="filterrific_results">
+  <h1>Listing Listings</h1>
+
+  <div>
+    <%= page_entries_info listings %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Rooms </th>
+      <th>Bathroom </th>
+      <th colspan="3"></th>
+    </tr>
+
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.category %></td>
+        <td><%= listing.title %></td>
+        <td><%= listing.location %></td>
+        <td><%= listing.room_nums %></td>
+        <td><%= listing.bathroom_nums %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @listings %>
+</div>
+
+
